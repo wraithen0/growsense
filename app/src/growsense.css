@@ -1,0 +1,194 @@
+/* GrowSense brand layer — appended to the template Tailwind wiring.
+ * Palette and type per app/design-brief.md (almanac concept). */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@theme {
+  --color-paper: #f6f4ec;
+  --color-paper-raised: #fdfcf8;
+  --color-ink: #1e2b22;
+  --color-ink-soft: #54655a;
+  --color-leaf: #2e6b3e;
+  --color-leaf-deep: #1f4a2b;
+  --color-sage: #dde7da;
+  --color-sage-soft: #eef2ea;
+  --color-clay: #c0563b;
+  --color-clay-soft: #f4e2dc;
+  --color-gold: #b98a2f;
+  --color-gold-soft: #f3ead3;
+  --color-hairline: #d8d4c6;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Public Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+/* Quanta's base layer sets its own body font; keep the brand type winning. */
+body {
+  font-family: var(--font-body) !important;
+}
+
+/* ---- bespoke chrome: each CTA gets its own component identity ---- */
+
+/* Hero CTA: solid leaf pill with an ink underline sweep on hover. */
+.cta-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-leaf);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  box-shadow: 0 1px 0 var(--color-leaf-deep), 0 6px 16px rgba(30, 43, 34, 0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  position: relative;
+}
+.cta-hero::after {
+  content: "";
+  position: absolute;
+  left: 1.6rem;
+  right: 1.6rem;
+  bottom: 0.45rem;
+  height: 1px;
+  background: var(--color-paper);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.cta-hero:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 0 var(--color-leaf-deep), 0 10px 22px rgba(30, 43, 34, 0.22);
+}
+.cta-hero:hover::after {
+  transform: scaleX(1);
+}
+
+/* Ledger-row link: underlined ink text, leaf arrow slides on hover. */
+.cta-ledger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-hairline);
+  text-underline-offset: 4px;
+  transition: color 140ms ease;
+}
+.cta-ledger .arrow {
+  display: inline-block;
+  transition: transform 160ms ease;
+}
+.cta-ledger:hover {
+  color: var(--color-leaf);
+  text-decoration-color: var(--color-leaf);
+}
+.cta-ledger:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Code-block copy chip: mono, pressed-in on active. */
+.cta-copy {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--color-ink);
+  color: var(--color-sage);
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: transform 100ms ease, opacity 120ms ease;
+}
+.cta-copy:active {
+  transform: translateY(1px);
+  opacity: 0.85;
+}
+
+/* Add-device button: dashed ink outline, press-in effect. */
+.cta-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  border: 1.5px dashed var(--color-ink-soft);
+  color: var(--color-ink);
+  background: transparent;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease, transform 100ms ease;
+}
+.cta-add:hover {
+  border-color: var(--color-leaf);
+  background: var(--color-sage-soft);
+}
+.cta-add:active {
+  transform: scale(0.985);
+}
+
+/* ---- almanac paper texture (pure CSS, no raster) ---- */
+.paper-bg {
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(46, 107, 62, 0.07), transparent 60%),
+    radial-gradient(900px 420px at -10% 30%, rgba(185, 138, 47, 0.05), transparent 55%),
+    var(--color-paper);
+}
+.card-almanac {
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-hairline);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(30, 43, 34, 0.05);
+}
+.rule-dotted {
+  background-image: linear-gradient(to right, var(--color-hairline) 33%, transparent 0%);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+  height: 1px;
+}
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-leaf);
+}
+
+/* status dots */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.dot-ok { background: var(--color-leaf); }
+.dot-watch { background: var(--color-gold); }
+.dot-critical { background: var(--color-clay); }
+
+/* micro-motion: number transitions on live values */
+.live-value {
+  transition: color 400ms ease;
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.live-pulse {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-pulse { animation: none; }
+  .cta-hero, .cta-hero::after, .cta-ledger .arrow, .cta-copy, .cta-add, .live-value {
+    transition: none;
+  }
+}

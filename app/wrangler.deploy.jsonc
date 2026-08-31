@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "growsense-ai",
+  "main": "dist/server/server.js",
+  "compatibility_date": "2025-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "none"
+  },
+  "vars": { "HF_ENV": "production", "APP_SLUG": "growsense-ai" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "growsense-db",
+      "database_id": "87eedccf-d849-4a68-b3fe-03dceb35696f"
+    }
+  ]
+}
