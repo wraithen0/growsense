@@ -26,7 +26,7 @@ function Landing() {
 function Header() {
   return (
     <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-      <Wordmark />
+      <Link to="/"><Wordmark /></Link>
       <nav className="flex items-center gap-6 text-sm font-medium" style={{ color: "var(--color-ink-soft)" }}>
         <a href="#how" className="hover:underline underline-offset-4">How it works</a>
         <a href="#builders" className="hover:underline underline-offset-4">For builders</a>
@@ -326,7 +326,7 @@ function Footer() {
   return (
     <footer className="border-t" style={{ borderColor: "var(--color-hairline)" }}>
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-10 md:flex-row md:items-center">
-        <Wordmark />
+      <Link to="/"><Wordmark /></Link>
         <p className="text-sm" style={{ color: "var(--color-ink-soft)" }}>
           Built for VoltHacks 2026. Sensors simulated in software; real hardware welcome over the same API.
         </p>

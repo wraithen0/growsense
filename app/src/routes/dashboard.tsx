@@ -11,7 +11,7 @@ function DashboardLayout() {
   return (
     <div className="paper-bg min-h-screen" style={{ color: "var(--color-ink)" }}>
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link to="/dashboard"><Wordmark /></Link>
+        <Link to="/"><Wordmark /></Link>
         <span className="flex items-center gap-2 text-xs font-semibold" style={{ color: "var(--color-ink-soft)" }}>
           <span className="dot dot-ok live-pulse" /> live &middot; refreshing every 12s
         </span>
